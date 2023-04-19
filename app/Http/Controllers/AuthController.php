@@ -37,27 +37,27 @@ class AuthController extends Controller
     return response()->json(['token' => $token], 201);
 }
 
-    public function verify($email)
-    {
-        if(auth()->user()){
+    // public function verify($email)
+    // {
+    //     if(auth()->user()){
 
-            User::where('email',$email)->get();
-            if(count($user) > 0){
+    //         User::where('email',$email)->get();
+    //         if(count($user) > 0){
 
-                $data['email'] = $email;
-                $data['title'] = "Email Verification";
-                $data['body'] = "Please click here below to verify your email.";
+    //             $data['email'] = $email;
+    //             $data['title'] = "Email Verification";
+    //             $data['body'] = "Please click here below to verify your email.";
 
-                Mail::send('')
+    //             Mail::send('')
 
-            }  
-            else{
-            return response()->json(['success'=>false,'msg'=>'User is not Found']);
-        }   
-        }
-          else{
-            return response()->json(['success'=>false,'msg'=>'User is not Authenticated.']);
-        }   
+    //         }  
+    //         else{
+    //         return response()->json(['success'=>false,'msg'=>'User is not Found']);
+    //     }   
+    //     }
+    //       else{
+    //         return response()->json(['success'=>false,'msg'=>'User is not Authenticated.']);
+    //     }   
 
-    }
+    // }
 }

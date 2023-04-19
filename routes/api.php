@@ -49,7 +49,12 @@ Route::post('/sanctum/login', function (Request $request) {
         ]);
     }
  
-    return $user->createToken($request->email)->plainTextToken;
+    return $user->createToken($request->email)->plainTextToken;{
+        throw ValidationException::withMessages([
+            'email' => ['The provided credentials are incorrect.'],
+        ]);
+    }
+    
 });
 
 // Route::post('/auth/register', function (Request $request) {
